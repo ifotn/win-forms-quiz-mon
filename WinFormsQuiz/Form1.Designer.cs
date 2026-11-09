@@ -28,15 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
+            Button btnRestart;
             btnSubmit = new Button();
             lblMessage = new Label();
             lblQuestion = new Label();
             txtAnswer = new TextBox();
+            btnRestart = new Button();
             SuspendLayout();
+            // 
+            // btnRestart
+            // 
+            btnRestart.Location = new Point(529, 270);
+            btnRestart.Name = "btnRestart";
+            btnRestart.Size = new Size(94, 29);
+            btnRestart.TabIndex = 4;
+            btnRestart.Text = "Restart";
+            btnRestart.UseVisualStyleBackColor = true;
+            btnRestart.Click += btnRestart_Click;
             // 
             // btnSubmit
             // 
-            btnSubmit.Location = new Point(300, 266);
+            btnSubmit.Location = new Point(413, 270);
             btnSubmit.Name = "btnSubmit";
             btnSubmit.Size = new Size(94, 29);
             btnSubmit.TabIndex = 0;
@@ -75,6 +87,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1041, 619);
+            Controls.Add(btnRestart);
             Controls.Add(txtAnswer);
             Controls.Add(lblQuestion);
             Controls.Add(lblMessage);

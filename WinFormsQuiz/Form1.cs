@@ -3,7 +3,7 @@ namespace WinFormsQuiz
     public partial class Form1 : Form
     {
         // array of questions and answers
-        string[,] questions = new string[3, 2];
+        string[,] questions = new string[4, 2];
 
         // track current question
         int currentQuestion = 0;
@@ -15,7 +15,7 @@ namespace WinFormsQuiz
         public Form1()
         {
             InitializeComponent();
-            
+
             // populate array
             questions[0, 0] = "What's the capital of Japan?";
             questions[0, 1] = "Tokyo";
@@ -23,6 +23,8 @@ namespace WinFormsQuiz
             questions[1, 1] = "Blue";
             questions[2, 0] = "Which came first, the chicken or the egg?";
             questions[2, 1] = "Chicken";
+            questions[3, 0] = "What day is our class?";
+            questions[3, 1] = "Monday";
 
             // show 1st question on question label
             lblQuestion.Text = questions[0, 0];
@@ -53,7 +55,7 @@ namespace WinFormsQuiz
             if (currentQuestion < questions.GetLength(0))
             {
                 //  move to next question                
-                lblQuestion.Text = questions[currentQuestion, 0];           
+                lblQuestion.Text = questions[currentQuestion, 0];
             }
             else
             {
@@ -64,7 +66,16 @@ namespace WinFormsQuiz
 
             // clear last answer
             txtAnswer.Text = "";
-            
+        }
+
+        private void btnRestart_Click(object sender, EventArgs e)
+        {
+            currentQuestion = 0;
+            correct = 0;
+            lblMessage.Text = "Restarting the Quiz";
+            lblMessage.ForeColor = Color.Black;
+            lblQuestion.Text = questions[0, 0];
+            btnSubmit.Enabled = true;
         }
     }
 }
