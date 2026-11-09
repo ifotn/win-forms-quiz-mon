@@ -65,7 +65,7 @@
             // 
             // txtAnswer
             // 
-            txtAnswer.Location = new Point(300, 156);
+            txtAnswer.Location = new Point(527, 152);
             txtAnswer.Name = "txtAnswer";
             txtAnswer.Size = new Size(442, 27);
             txtAnswer.TabIndex = 3;
@@ -74,7 +74,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1041, 619);
             Controls.Add(txtAnswer);
             Controls.Add(lblQuestion);
             Controls.Add(lblMessage);

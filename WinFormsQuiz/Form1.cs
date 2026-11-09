@@ -5,8 +5,11 @@ namespace WinFormsQuiz
         // array of questions and answers
         string[,] questions = new string[3, 2];
 
-        
+        // track current question
+        int currentQuestion = 0;
 
+        // track correct answers
+        int correct = 0;
 
         // startup method that runs automatically when this form loads
         public Form1()
@@ -29,16 +32,39 @@ namespace WinFormsQuiz
         {
             // MessageBox.Show("You clicked me");
             // if user has entered correct answer in the textbox
-            if (txtAnswer.Text == "Tokyo")
+            if (txtAnswer.Text == questions[currentQuestion, 1])
             {
                 lblMessage.Text = "Correct";
                 lblMessage.ForeColor = Color.Green;
+
+                // add 1 to correct answer count
+                correct++;
             }
             else
             {
                 lblMessage.Text = "Incorrect";
                 lblMessage.ForeColor = Color.Red;
             }
+
+            // increment current question 
+            currentQuestion++;
+
+            // are there more questions?
+            if (currentQuestion < questions.GetLength(0))
+            {
+                //  move to next question                
+                lblQuestion.Text = questions[currentQuestion, 0];           
+            }
+            else
+            {
+                // user is done - no more questions
+                btnSubmit.Enabled = false;
+                lblQuestion.Text = $"You got {correct} correct answers out of {questions.GetLength(0)} questions.";
+            }
+
+            // clear last answer
+            txtAnswer.Text = "";
+            
         }
     }
 }
