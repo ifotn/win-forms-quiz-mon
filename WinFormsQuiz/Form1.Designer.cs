@@ -28,11 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Button btnRestart;
+            
             btnSubmit = new Button();
             lblMessage = new Label();
             lblQuestion = new Label();
             txtAnswer = new TextBox();
+            btnToggleTheme = new Button();
             btnRestart = new Button();
             SuspendLayout();
             // 
@@ -82,11 +83,22 @@
             txtAnswer.Size = new Size(442, 27);
             txtAnswer.TabIndex = 3;
             // 
+            // btnToggleTheme
+            // 
+            btnToggleTheme.Location = new Point(646, 270);
+            btnToggleTheme.Name = "btnToggleTheme";
+            btnToggleTheme.Size = new Size(116, 29);
+            btnToggleTheme.TabIndex = 5;
+            btnToggleTheme.Text = "Toggle Theme";
+            btnToggleTheme.UseVisualStyleBackColor = true;
+            btnToggleTheme.Click += btnToggleTheme_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1041, 619);
+            Controls.Add(btnToggleTheme);
             Controls.Add(btnRestart);
             Controls.Add(txtAnswer);
             Controls.Add(lblQuestion);
@@ -104,5 +116,7 @@
         private Label lblMessage;
         private Label lblQuestion;
         private TextBox txtAnswer;
+        private Button btnToggleTheme;
+        private Button btnRestart;
     }
 }

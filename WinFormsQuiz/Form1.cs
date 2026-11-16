@@ -11,11 +11,23 @@ namespace WinFormsQuiz
         // track correct answers
         int correct = 0;
 
+        bool isDark = false;
+
         // startup method that runs automatically when this form loads
         public Form1()
         {
             InitializeComponent();
 
+            // call new LoadQuestions() method to populate quiz data
+            LoadQuestions();
+        }
+
+        /// <summary>
+        /// populate question / answer array
+        /// </summary>
+        /// <author>Rich</author>
+        private void LoadQuestions()
+        {
             // populate array
             questions[0, 0] = "What's the capital of Japan?";
             questions[0, 1] = "Tokyo";
@@ -30,22 +42,41 @@ namespace WinFormsQuiz
             lblQuestion.Text = questions[0, 0];
         }
 
+        /// <summary>
+        /// give feedback on answer
+        /// </summary>
+        /// <param name="text">feedback to show on label</param>
+        /// <param name="colour">text color for feedback label</param>
+        private void ShowFeedback(string text, Color colour)
+        {
+            lblMessage.Text = text;
+            lblMessage.ForeColor = colour;
+        }
+
+        /// <summary>
+        /// user has finished
+        /// </summary>
+        private void FinishQuiz()
+        {
+            btnSubmit.Enabled = false;
+            lblQuestion.Text = $"You got {correct} correct answers out of {questions.GetLength(0)} questions.";
+        }
+
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             // MessageBox.Show("You clicked me");
             // if user has entered correct answer in the textbox
             if (txtAnswer.Text == questions[currentQuestion, 1])
             {
-                lblMessage.Text = "Correct";
-                lblMessage.ForeColor = Color.Green;
+                ShowFeedback("Correct", Color.Green);
 
                 // add 1 to correct answer count
                 correct++;
             }
             else
             {
-                lblMessage.Text = "Incorrect";
-                lblMessage.ForeColor = Color.Red;
+                // wrong answer
+                ShowFeedback("Incorrect", Color.Red);
             }
 
             // increment current question 
@@ -60,8 +91,7 @@ namespace WinFormsQuiz
             else
             {
                 // user is done - no more questions
-                btnSubmit.Enabled = false;
-                lblQuestion.Text = $"You got {correct} correct answers out of {questions.GetLength(0)} questions.";
+                FinishQuiz();
             }
 
             // clear last answer
@@ -76,6 +106,36 @@ namespace WinFormsQuiz
             lblMessage.ForeColor = Color.Black;
             lblQuestion.Text = questions[0, 0];
             btnSubmit.Enabled = true;
+        }
+
+        private void btnToggleTheme_Click(object sender, EventArgs e)
+        {
+            if (isDark == true)
+            {
+                this.BackColor = Color.Black;
+                lblMessage.ForeColor = Color.White;
+                lblQuestion.ForeColor = Color.White;
+                txtAnswer.ForeColor = Color.White;
+                //btnSubmit.ForeColor = Color.Black;
+                //btnRestart.ForeColor = Color.Black;
+                //btnToggleTheme.ForeColor = Color.Black;
+                txtAnswer.BackColor = Color.Gray;
+                isDark = false;
+            }
+            else
+            {
+                {
+                    this.BackColor = Color.White;
+                    lblMessage.ForeColor = Color.Black;
+                    lblQuestion.ForeColor = Color.Black;
+                    txtAnswer.ForeColor = Color.Black;
+                    //btnSubmit.ForeColor = Color.White;
+                    //btnRestart.ForeColor = Color.White;
+                    //btnToggleTheme.ForeColor = Color.White;
+                    txtAnswer.BackColor = Color.DimGray;
+                    isDark = true;
+                }
+            }
         }
     }
 }
