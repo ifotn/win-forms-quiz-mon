@@ -29,8 +29,8 @@ namespace WinFormsQuiz
         private void LoadQuestions()
         {
             // populate array
-            questions[0, 0] = "What's the capital of Japan?";
-            questions[0, 1] = "Tokyo";
+            questions[0, 0] = "What's 5 times 3?";
+            questions[0, 1] = "15";
             questions[1, 0] = "What colour is the sky?";
             questions[1, 1] = "Blue";
             questions[2, 0] = "Which came first, the chicken or the egg?";
@@ -64,38 +64,58 @@ namespace WinFormsQuiz
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
+            try
+            {
+                // testing 1st question only - convert answer to an int
+                // int answer = int.Parse(txtAnswer.Text);
+
+                // if user has entered correct answer in the textbox
+                if (txtAnswer.Text == questions[currentQuestion, 1])
+                {
+                    ShowFeedback("Correct", Color.Green);
+
+                    // add 1 to correct answer count
+                    correct++;
+                }
+                else
+                {
+                    // wrong answer
+                    ShowFeedback("Incorrect", Color.Red);
+                }
+
+                // increment current question 
+                currentQuestion++;
+
+                // are there more questions?
+                if (currentQuestion < questions.GetLength(0))
+                {
+                    //  move to next question                
+                    lblQuestion.Text = questions[currentQuestion, 0];
+                }
+                else
+                {
+                    // user is done - no more questions
+                    FinishQuiz();
+                }
+
+                // clear last answer
+                txtAnswer.Text = "";
+            }
+            catch (FormatException)
+            {
+                ShowFeedback("Enter a whole number", Color.Red);
+                txtAnswer.Focus();
+            }
+            catch (OverflowException)
+            {
+                ShowFeedback("That number is too large", Color.Red);
+                txtAnswer.Focus();
+            }
+            
+            return; // stop here
+
             // MessageBox.Show("You clicked me");
-            // if user has entered correct answer in the textbox
-            if (txtAnswer.Text == questions[currentQuestion, 1])
-            {
-                ShowFeedback("Correct", Color.Green);
-
-                // add 1 to correct answer count
-                correct++;
-            }
-            else
-            {
-                // wrong answer
-                ShowFeedback("Incorrect", Color.Red);
-            }
-
-            // increment current question 
-            currentQuestion++;
-
-            // are there more questions?
-            if (currentQuestion < questions.GetLength(0))
-            {
-                //  move to next question                
-                lblQuestion.Text = questions[currentQuestion, 0];
-            }
-            else
-            {
-                // user is done - no more questions
-                FinishQuiz();
-            }
-
-            // clear last answer
-            txtAnswer.Text = "";
+            
         }
 
         private void btnRestart_Click(object sender, EventArgs e)
