@@ -111,11 +111,11 @@ namespace WinFormsQuiz
                 ShowFeedback("That number is too large", Color.Red);
                 txtAnswer.Focus();
             }
-            
+
             return; // stop here
 
             // MessageBox.Show("You clicked me");
-            
+
         }
 
         private void btnRestart_Click(object sender, EventArgs e)
@@ -156,6 +156,25 @@ namespace WinFormsQuiz
                     isDark = true;
                 }
             }
+        }
+
+        private void btnSetTimeLimit_Click(object sender, EventArgs e)
+        {
+            // use int.TryParse to TRY converting value to an int without crashing
+            // if text input is a valid number, store it in timeLimit var
+            // TryParse returns true if value is a number, false if it is not a number
+            if (int.TryParse(txtTimeLimit.Text, out int timeLimit) == true)
+            {
+                lblTimeLimit.Text = $"Time Limit: {timeLimit}";
+                // remove any error message
+                ShowFeedback("", Color.Black);
+            }
+            else
+            {
+                ShowFeedback("Invalid Time Limit", Color.Red);
+                txtTimeLimit.Focus();
+            }
+
         }
     }
 }

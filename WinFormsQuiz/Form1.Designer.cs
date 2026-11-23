@@ -34,12 +34,15 @@
             lblQuestion = new Label();
             txtAnswer = new TextBox();
             btnToggleTheme = new Button();
+            lblTimeLimit = new Label();
+            txtTimeLimit = new TextBox();
+            btnSetTimeLimit = new Button();
             btnRestart = new Button();
             SuspendLayout();
             // 
             // btnRestart
             // 
-            btnRestart.Location = new Point(494, 359);
+            btnRestart.Location = new Point(494, 441);
             btnRestart.Name = "btnRestart";
             btnRestart.Size = new Size(128, 41);
             btnRestart.TabIndex = 5;
@@ -49,7 +52,7 @@
             // 
             // btnSubmit
             // 
-            btnSubmit.Location = new Point(334, 359);
+            btnSubmit.Location = new Point(334, 441);
             btnSubmit.Name = "btnSubmit";
             btnSubmit.Size = new Size(128, 41);
             btnSubmit.TabIndex = 4;
@@ -61,7 +64,7 @@
             // 
             lblMessage.AutoSize = true;
             lblMessage.Font = new Font("Segoe UI", 16F);
-            lblMessage.Location = new Point(334, 150);
+            lblMessage.Location = new Point(334, 232);
             lblMessage.MinimumSize = new Size(442, 0);
             lblMessage.Name = "lblMessage";
             lblMessage.Size = new Size(442, 37);
@@ -72,7 +75,7 @@
             // lblQuestion
             // 
             lblQuestion.AutoSize = true;
-            lblQuestion.Location = new Point(334, 270);
+            lblQuestion.Location = new Point(334, 352);
             lblQuestion.MinimumSize = new Size(442, 0);
             lblQuestion.Name = "lblQuestion";
             lblQuestion.Size = new Size(442, 20);
@@ -82,7 +85,7 @@
             // 
             // txtAnswer
             // 
-            txtAnswer.Location = new Point(334, 309);
+            txtAnswer.Location = new Point(334, 391);
             txtAnswer.MaxLength = 11;
             txtAnswer.Name = "txtAnswer";
             txtAnswer.Size = new Size(442, 27);
@@ -90,7 +93,7 @@
             // 
             // btnToggleTheme
             // 
-            btnToggleTheme.Location = new Point(648, 359);
+            btnToggleTheme.Location = new Point(648, 441);
             btnToggleTheme.Name = "btnToggleTheme";
             btnToggleTheme.Size = new Size(128, 41);
             btnToggleTheme.TabIndex = 5;
@@ -98,11 +101,40 @@
             btnToggleTheme.UseVisualStyleBackColor = true;
             btnToggleTheme.Click += btnToggleTheme_Click;
             // 
+            // lblTimeLimit
+            // 
+            lblTimeLimit.AutoSize = true;
+            lblTimeLimit.Location = new Point(334, 69);
+            lblTimeLimit.Name = "lblTimeLimit";
+            lblTimeLimit.Size = new Size(79, 20);
+            lblTimeLimit.TabIndex = 6;
+            lblTimeLimit.Text = "Time Limit";
+            // 
+            // txtTimeLimit
+            // 
+            txtTimeLimit.Location = new Point(494, 66);
+            txtTimeLimit.Name = "txtTimeLimit";
+            txtTimeLimit.Size = new Size(125, 27);
+            txtTimeLimit.TabIndex = 7;
+            // 
+            // btnSetTimeLimit
+            // 
+            btnSetTimeLimit.Location = new Point(648, 60);
+            btnSetTimeLimit.Name = "btnSetTimeLimit";
+            btnSetTimeLimit.Size = new Size(128, 38);
+            btnSetTimeLimit.TabIndex = 8;
+            btnSetTimeLimit.Text = "Set";
+            btnSetTimeLimit.UseVisualStyleBackColor = true;
+            btnSetTimeLimit.Click += btnSetTimeLimit_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1121, 631);
+            Controls.Add(btnSetTimeLimit);
+            Controls.Add(txtTimeLimit);
+            Controls.Add(lblTimeLimit);
             Controls.Add(btnToggleTheme);
             Controls.Add(btnRestart);
             Controls.Add(txtAnswer);
@@ -123,5 +155,8 @@
         private TextBox txtAnswer;
         private Button btnToggleTheme;
         private Button btnRestart;
+        private Label lblTimeLimit;
+        private TextBox txtTimeLimit;
+        private Button btnSetTimeLimit;
     }
 }
